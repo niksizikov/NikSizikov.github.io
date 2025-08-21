@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Nik Sizikov - Sports Retail</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Data Analyst</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>Sports Retail — User Behavior, Segmentation & Propensity Model</h1>
+							<p>
+							  Client prepares a marketing campaign in <strong>city 1188 (country 32)</strong>. The goal:
+							  assess user behavior, cluster customers, build a purchase propensity model, and deliver
+							  recommendations for personalized marketing.
+							</p>
+						  
+							<hr class="major" />
+						  
+							<h2>Data</h2>
+							<p>
+							  Integrated tables covering user profiles (sex, age, education, city/country), customer coefficients,
+							  detailed purchases (product, color, gender tag, discount flag/size, price, date), and history of
+							  a prior email <strong>A/B test</strong>. Scope: <strong>104,534</strong> unique customers and
+							  <strong>786,260</strong> purchases.
+							</p>
+						  
+							<h2>Behavior Highlights</h2>
+							<ul>
+							  <li>Typical buyer ≈ <strong>36 y.o.</strong>; ~<strong>6</strong> purchases; total spend ≈ <strong>34k</strong> units.</li>
+							  <li>Most have secondary education; apparel & footwear dominate the basket.</li>
+							  <li>Older users show stronger interest in discounts.</li>
+							</ul>
+						  
+							<hr class="major" />
+						  
+							<h2>A/B Test (Email)</h2>
+							<ul>
+							  <li>Conversion rate: control = <strong>1.00</strong>, test = <strong>1.00</strong> (no change).</li>
+							  <li>Avg. number of purchases: <strong>11.02 → 12.80</strong> in test (<strong>p = 0.0057</strong>).</li>
+							  <li>Avg. spend and discount share: no significant difference.</li>
+							  <li><em>Conclusion:</em> email increases purchase frequency, not average check.</li>
+							</ul>
+						  
+							<hr class="major" />
+						  
+							<h2>Clustering</h2>
+							<div class="row gtr-50 gtr-uniform">
+							  <div class="col-6"><span class="image fit"><img src="images/sr_silhouette.png" alt="Silhouette score by k" /></span></div>
+							  <div class="col-6"><span class="image fit"><img src="images/sr_elbow.png" alt="Elbow method inertia curve" /></span></div>
+							</div>
+							<p>
+							  Selected <strong>k = 3</strong> clusters (silhouette peak and elbow concur). Profiles:
+							  <strong>Cluster 0</strong> — middle-aged, low activity, secondary education;
+							  <strong>Cluster 1</strong> — younger, low activity, higher education;
+							  <strong>Cluster 2</strong> — anomalously active, very high spend.
+							</p>
+							<span class="image main"><img src="images/sr_pca.png" alt="PCA 2D scatter showing 3 clusters" /></span>
+						  
+							<h2>Propensity-to-Purchase Model</h2>
+							<p>
+							  Trained on the A/B sample (target: test vs control). Algorithm: <strong>RandomForestClassifier</strong>.
+							  Features: age, sex, spend, discounts, cluster, education. Results:
+							  <strong>F1 = 0.71</strong> (class 1), <strong>Recall = 0.80</strong>, <strong>AUC = 0.51</strong>.
+							  Interpretation: high recall suitable for broad outreach; weak separation overall.
+							</p>
+						  
+							<h2>Discount Sensitivity</h2>
+							<div class="row gtr-50 gtr-uniform">
+							  <div class="col-6"><span class="image fit"><img src="images/sr_discount_by_cluster.png" alt="Discount share by cluster" /></span></div>
+							  <div class="col-6"><span class="image fit"><img src="images/sr_discount_by_response.png" alt="Discount share by response group" /></span></div>
+							</div>
+							<p>
+							  High-response customers are <strong>less discount-driven</strong> than low/medium groups; clusters differ
+							  in discount usage distributions.
+							</p>
+						  
+							<hr class="major" />
+						  
+							<h2>High-Response Portrait</h2>
+							<ul>
+							  <li>Mostly <strong>40+</strong>; activity ~<strong>6–7</strong> purchases; spend ≈ <strong>33–35k</strong>.</li>
+							  <li>Often secondary education; prefer apparel, footwear, equipment.</li>
+							  <li>Discount is <strong>not</strong> a key motivator.</li>
+							</ul>
+						  
+							<h2>Recommendations</h2>
+							<ul>
+							  <li><strong>Cluster 0 (mass):</strong> content-driven comms (curated picks, guides, reviews); emphasize value & service; avoid blanket deep discounts.</li>
+							  <li><strong>Cluster 1 (younger, digital):</strong> visual/gamified mechanics, mobile pushes, convenience (fast selection, one-click).</li>
+							  <li><strong>Cluster 2 (VIP-like):</strong> exclusivity, premium loyalty, personal managers; status & service over mass promos.</li>
+							  <li><strong>General:</strong> behavior-based segmentation outperforms pure demographics; test segment-specific creatives and discount levels.</li>
+							</ul>
+						  
+							<h2>Limitations</h2>
+							<ul>
+							  <li>Small training sample from A/B; no explicit negative outcomes; potential seasonality/geo bias.</li>
+							</ul>
+						  </div>
+
+						  <section class="case-cta">
+						<ul class="actions" style="justify-content:center;">
+							<li>
+								<a href="assets/docs/sr_Report_RU.pdf"
+								class="button primary icon solid fa-download"
+								target="_blank" rel="noopener">
+								Open Report (PDF)
+								</a>
+							</li>
+							<li>
+								<a href="assets/docs/sr_Presentation_RU.pdf"
+								class="button icon solid fa-download"
+								target="_blank" rel="noopener">
+								Open Presentation (PDF)
+								</a>
+							</li>
+						</ul>
+					</section>
+
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

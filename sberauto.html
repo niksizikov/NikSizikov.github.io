@@ -1,0 +1,233 @@
+<!DOCTYPE HTML>
+<!--
+	Phantom by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Nik Sizikov - SberAuto case</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="inner">
+
+							<!-- Logo -->
+								<a href="index.html" class="logo">
+									<span class="symbol"><img src="images/logo.svg" alt="" /></span><span class="title">Data Analyst</span>
+								</a>
+
+							<!-- Nav -->
+								<nav>
+									<ul>
+										<li><a href="#menu">Menu</a></li>
+									</ul>
+								</nav>
+
+						</div>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<h2>Menu</h2>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="generic.html">Ipsum veroeros</a></li>
+							<li><a href="generic.html">Tempus etiam</a></li>
+							<li><a href="generic.html">Consequat dolor</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>SberAutoSubscription Website Analysis</h1>
+							<p>
+							  Final course project. Goal: evaluate traffic quality and conversion into target events,
+							  test key hypotheses, and answer product questions based on GA session and hit data.
+							</p>
+						  
+							<hr class="major" />
+						  
+							<h2>Objectives</h2>
+							<ul>
+							  <li>Measure conversion rate (CR) by source, campaign, device, and location.</li>
+							  <li>Validate hypotheses about organic vs. paid traffic, device types, and presence cities.</li>
+							  <li>Provide actionable recommendations for marketing focus and content.</li>
+							</ul>
+						  
+							<h2>Hypotheses</h2>
+							<ol>
+							  <li><strong>Organic vs Paid:</strong> CR for organic traffic does not differ from paid traffic.</li>
+							  <li><strong>Mobile vs Desktop:</strong> CR for mobile traffic does not differ from desktop.</li>
+							  <li><strong>Presence Cities:</strong> CR in Moscow region and Saint Petersburg does not differ from other regions.</li>
+							</ol>
+						  
+							<h2>Product Team Questions</h2>
+							<ul>
+							  <li>Which sources/campaigns/devices/locations bring the most qualified traffic (by volume and CR)?</li>
+							  <li>Which car brands and models are most in demand? Which have the best CR to target events?</li>
+							  <li>Should we increase our presence and ads in social media?</li>
+							</ul>
+						  
+							<h2>Stack & Tools</h2>
+							<p>
+							  JupyterLab; Python libraries: <em>dill, matplotlib, numpy, pandas, scipy, scikit-learn</em>.
+							</p>
+						  
+							<hr class="major" />
+						  
+							<h2>Process</h2>
+							<h3>Stage 1 — Preparation</h3>
+							<ul>
+							  <li><strong>Load data:</strong> <code>ga_sessions.pkl</code>, <code>ga_hits.pkl</code>
+								(optionally with Dask / chunked loads).</li>
+							  <li><strong>Explore schema:</strong> <code>df.info()</code>, <code>df.head()</code>, <code>df.describe()</code>.</li>
+							  <li><strong>Completeness:</strong> <code>isna().sum()</code>; custom missing-values report; decide fill vs drop.</li>
+							  <li><strong>Tidy data:</strong> normalize target actions, traffic sources, social tags; cast dtypes
+								(e.g., <code>int32</code>/<code>float32</code>, <code>category</code>); drop unused columns.</li>
+							</ul>
+						  
+							<h3>Stage 2 — EDA</h3>
+							<ul>
+							  <li>Remove duplicates; impute: median/mean for numeric, most-frequent for categorical.</li>
+							  <li>Visualize distributions (histograms, bar charts); identify anomalies/outliers.</li>
+							  <li>Correlation (numeric features); CR cuts by <code>utm_source</code>, <code>geo_city</code>, <code>device_category</code>.</li>
+							</ul>
+						  
+							<h3>Stage 3 — Hypothesis Testing</h3>
+							<ul>
+							  <li>H1: Organic vs Paid CR comparison.</li>
+							  <li>H2: Mobile vs Desktop CR comparison.</li>
+							  <li>H3: Presence cities vs other regions CR comparison.</li>
+							</ul>
+						  
+							<h3>Stage 4 — Answers for the Product Team</h3>
+							<ul>
+							  <li>Rank sources/campaigns/devices/locations by traffic and CR.</li>
+							  <li>Top-10 brands and models by demand and CR.</li>
+							  <li>Compare social media performance vs other sources.</li>
+							</ul>
+						  
+							<hr class="major" />
+						  
+							<h2>Key Results</h2>
+						  
+							<h3>Traffic Sources</h3>
+							<p>
+							  <strong>Other sources</strong> deliver the highest CR ≈ <strong>2.92%</strong> and the largest volume
+							  (~<strong>1,585,815</strong> sessions), outperforming social media (CR ≈ <strong>1.47%</strong>, ~274,227 sessions).
+							</p>
+							<span class="image main"><img src="images/sberauto_sources.png" alt="CR and sessions by traffic source" /></span>
+						  
+							<h3>Campaigns</h3>
+							<p>
+							  Single-session campaigns show 100% CR but are not statistically meaningful. Campaign
+							  <strong>lndNIerCYECRQvBTyTye</strong> is the most reliable mix of volume and efficiency (CR ≈ <strong>27.38%</strong>,
+							  <strong>23</strong> conversions, <strong>84</strong> sessions).
+							</p>
+							<span class="image main"><img src="images/sberauto_campaigns.png" alt="Campaign performance ranking" /></span>
+						  
+							<h3>Devices</h3>
+							<p>
+							  Best CR on <strong>desktop</strong> (~<strong>3.13%</strong>), followed by <strong>mobile</strong> (~2.60%) and
+							  <strong>tablet</strong> (~2.30%). However, traffic volume is dominated by mobile
+							  (~<strong>1,474,871</strong> sessions; <strong>38,379</strong> conversions).
+							</p>
+							<span class="image main"><img src="images/sberauto_devices.png" alt="CR by device and traffic volume" /></span>
+						  
+							<h3>Locations</h3>
+							<p>
+							  Cities with 100% CR (e.g., Beaver Falls, Brescia, Gravesend) have a single session and are not significant.
+							  Focus on high-volume regions for robust conclusions.
+							</p>
+						  
+							<h3>Brands & Models</h3>
+							<p>
+							  <strong>Top brands by sessions:</strong> Skoda (~744,516), Mercedes‑Benz (~472,316), Volkswagen (~417,128).<br/>
+							  <strong>Top models by sessions:</strong> Skoda Rapid (~442,513), Lada Vesta (~403,910), Volkswagen Polo (~318,075).
+							</p>
+							<span class="image main"><img src="images/sberauto_brands.png" alt="Top car brands by demand" /></span>
+							<span class="image main"><img src="images/sberauto_models.png" alt="Top car models by demand" /></span>
+						  
+							<h3>Social Media</h3>
+							<p>
+							  Social ads currently underperform: sessions, conversions, and CR ≈ <strong>0%</strong>.
+							  Compared to overall CR (~<strong>2.71%</strong>), social does not bring qualified traffic in its current setup.
+							</p>
+							<span class="image main"><img src="images/sberauto_social.png" alt="Social media CR vs other sources" /></span>
+						  
+							<hr class="major" />
+						  
+							<h2>Recommendations</h2>
+							<ul>
+							  <li><strong>Reallocate spend</strong> to high‑CR sources (esp. “Other sources”) and
+								  scale proven campaigns like <em>lndNIerCYECRQvBTyTye</em>.</li>
+							  <li><strong>Mobile UX focus:</strong> mobile drives the majority of traffic—optimize funnels to lift CR.</li>
+							  <li><strong>Geo prioritization:</strong> double‑down on regions with both high volume and solid CR.</li>
+							  <li><strong>Rethink social:</strong> audit targeting/creative/landing; pause or iterate quickly if CR stays near zero.</li>
+							  <li><strong>Merchandising:</strong> feature high‑demand models (Skoda Rapid, Lada Vesta, VW Polo) more prominently.</li>
+							</ul>
+						  </div>
+	  
+				<!-- Footer -->
+					<footer id="footer">
+						<div class="inner">
+							<section>
+								<h2>Get in touch</h2>
+								<form method="post" action="#">
+									<div class="fields">
+										<div class="field half">
+											<input type="text" name="name" id="name" placeholder="Name" />
+										</div>
+										<div class="field half">
+											<input type="email" name="email" id="email" placeholder="Email" />
+										</div>
+										<div class="field">
+											<textarea name="message" id="message" placeholder="Message"></textarea>
+										</div>
+									</div>
+									<ul class="actions">
+										<li><input type="submit" value="Send" class="primary" /></li>
+									</ul>
+								</form>
+							</section>
+							<section>
+								<h2>Follow</h2>
+								<ul class="icons">
+									<li><a href="#" class="icon brands style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-facebook-f"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-dribbble"><span class="label">Dribbble</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-github"><span class="label">GitHub</span></a></li>
+									<li><a href="#" class="icon brands style2 fa-500px"><span class="label">500px</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-phone"><span class="label">Phone</span></a></li>
+									<li><a href="#" class="icon solid style2 fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+							</section>
+							<ul class="copyright">
+								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</footer>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
